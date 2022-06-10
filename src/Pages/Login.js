@@ -26,7 +26,6 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.token) {
           toast.success("Log In successfully");
         } else {
