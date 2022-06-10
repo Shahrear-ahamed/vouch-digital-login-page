@@ -13,7 +13,6 @@ const Login = () => {
     e.preventDefault();
     const emailId = e.currentTarget.email.value;
     const passwordS = e.currentTarget.password.value;
-    console.log({ emailId, passwordS });
     fetch("https://reqres.in/api/login", {
       method: "POST",
       headers: {
