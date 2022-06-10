@@ -5,7 +5,7 @@ import Navbar from "./Pages/Navbar";
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Login />
     </>
   );

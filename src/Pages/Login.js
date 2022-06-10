@@ -35,9 +35,9 @@ const Login = () => {
     setValidated(true);
   };
   return (
-    <Container className="vh-100">
-      <Row>
-        <Col sm={5} className="d-flex flex-column justify-content-center">
+    <Container>
+      <Row className="py-4 py-md-0">
+        <Col md={5} className="d-flex flex-column justify-content-center">
           <h1 className="text-center fw-bolder mb-2">Welcome Back</h1>
           <h6 className="text-center mb-4">Please Login with your email</h6>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -87,9 +87,9 @@ const Login = () => {
             </div>
           </Form>
         </Col>
-        <Col sm={7}>
-          <div className="w-100">
-            <img className="w-100" src={LoginPic} alt="login pic" />
+        <Col md={7}>
+          <div className="w-100 d-flex justify-content-center d-none d-md-block">
+            <img src={LoginPic} alt="login pic" style={{ width: "90%" }} />
           </div>
         </Col>
       </Row>
