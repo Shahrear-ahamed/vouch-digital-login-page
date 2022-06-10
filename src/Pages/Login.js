@@ -4,33 +4,35 @@ import Button from "react-bootstrap/Button";
 import { Container, Col, Row } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import LoginPic from "../Images/loginPic.jpg";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
     const emailId = e.currentTarget.email.value;
     const passwordS = e.currentTarget.password.value;
     console.log({ emailId, passwordS });
-    if (form.checkValidity()) {
-      fetch("https://reqres.in/api/login", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          email: emailId,
-          password: passwordS,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-    }
-    if (form.checkValidity() === false) {
-      e.stopPropagation();
-    }
+    fetch("https://reqres.in/api/login", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: emailId,
+        password: passwordS,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.token) {
+          toast.success("Log In successfully");
+        } else {
+          toast.error(data.error);
+        }
+      });
 
     setValidated(true);
   };
@@ -83,7 +85,7 @@ const Login = () => {
                   Remember me
                 </label>
               </div>
-              <a href="/forget-password">Forget Password?</a>
+              <a className="text-dark" href="/forget-password">Forget Password?</a>
             </div>
           </Form>
         </Col>
